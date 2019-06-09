@@ -5,6 +5,7 @@ $( document ).ready(function() {
 });
 
 
+var bts = ["BTS", "A.R.M.Y","Jin","SUGA","J-Hope","RM","Jimin","V","JungKook",];
 
 var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=ti59k5SAoYM0q2oy34i4oQmX7V8T39Qc";
 

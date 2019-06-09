@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,31 +17,31 @@
 
     <!-- font family -->
     <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Expanded|Fresca&display=swap" rel="stylesheet">
-    
+
     <title>Giphy Api</title>
 </head>
 
 <body>
-    
 
 
-<h1>Yadira's Random Giphy Topics</h1>
 
-<hr>
+    <h1>Yadira's Giphy Topic: BTS</h1>
 
-<h2>Favorite K-pop Group</h2>
-<button type="button" class="btn btn-outline-light">BTS</button>
-<button type="button" class="btn btn-outline-light">ARMY</button>
-<button type="button" class="btn btn-outline-light">Jin</button>
-<button type="button" class="btn btn-outline-light">Suga</button>
-<button type="button" class="btn btn-outline-light">J-Hope</button>
-<button type="button" class="btn btn-outline-light">RM</button>
-<button type="button" class="btn btn-outline-light">Jimin</button>
-<button type="button" class="btn btn-outline-light">V</button>
-<button type="button" class="btn btn-outline-light">JungKook</button>
+    <hr>
 
-<br>
+    <h2>Favorite K-pop Group</h2>
+    <button type="button" class="btn btn-outline-light">BTS</button>
+    <button type="button" class="btn btn-outline-light">A.R.M.Y</button>
+    <button type="button" class="btn btn-outline-light">Jin</button>
+    <button type="button" class="btn btn-outline-light">Suga</button>
+    <button type="button" class="btn btn-outline-light">J-Hope</button>
+    <button type="button" class="btn btn-outline-light">RM</button>
+    <button type="button" class="btn btn-outline-light">Jimin</button>
+    <button type="button" class="btn btn-outline-light">V</button>
+    <button type="button" class="btn btn-outline-light">JungKook</button>
 
+    <br>
+    <!-- 
 <h2>Random Flowers</h2>
 <button type="button" class="btn btn-outline-light">Sunflower</button>
 <button type="button" class="btn btn-outline-light">Lily</button>
@@ -60,31 +61,39 @@
 <button type="button" class="btn btn-outline-light">Peanut M&M's</button>
 <button type="button" class="btn btn-outline-light">Almond Joy</button>
 <button type="button" class="btn btn-outline-light">Chocolate Ice Cream</button>
-<button type="button" class="btn btn-outline-light">Chocolate Cake</button>
+<button type="button" class="btn btn-outline-light">Chocolate Cake</button> -->
+
+
+    <br>
+
+    <div id="buttons"></div>
+
+    <form id="kpop-form">
+        <label for="kpop">Other K-pop Groups</label>
+        <input type="text" id="kpop">
+        <input id="add-group" type="submit" value="More K-pop">
+        </form>
 
 
 
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
+        <!-- Bootstrap -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
 
-
-<!-- jQuery CDN -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-crossorigin="anonymous"></script>
-
-<!-- Bootstrap -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-crossorigin="anonymous"></script>
-
-<script src="assets/js/giphy.js"></script>
+        <script src="assets/js/giphy.js"></script>
 
 
 </body>
+
 </html>
