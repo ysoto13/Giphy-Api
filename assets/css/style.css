@@ -1,5 +1,16 @@
+/* font families:
+font-family: 'Fresca', sans-serif;
+font-family: 'Encode Sans Semi Expanded', sans-serif; */
+
+
+
 body {
     text-align: center;
     background: #6699cc;
     color: white;
+    font-family: 'Encode Sans Semi Expanded', sans-serif;
+}
+
+h1 {
+    font-family: 'Fresca', sans-serif;;
 }
