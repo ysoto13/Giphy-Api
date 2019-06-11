@@ -12,9 +12,9 @@ function showButtons() {
 
     for (var i = 0; i < bts.length; i++) {
         var group = $("<button>");
+        
+        // adding attr??
         group.addClass("kpop");
-
-        // addinig attr??
         group.attr("data-name", bts[i]);
         group.text(bts[i]);
         $("#buttons-buttons").append(group);
@@ -37,11 +37,11 @@ $("#add-kpop").on("click", function(event) {
     bts.push(kpop);
 
     // calling renderButtons which handles the processing of our movie array
-    renderButtons();
+    showButtons();
   });
 
   // Calling the renderButtons function at least once to display the initial list of movies
-  renderButtons();
+  showButtons();
 
 
 
