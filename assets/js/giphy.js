@@ -12,44 +12,56 @@ function showButtons() {
 
     for (var i = 0; i < bts.length; i++) {
         var group = $("<button>");
-        
-        // adding attr??
+
         group.addClass("kpop");
         group.attr("data-name", bts[i]);
         group.text(bts[i]);
         $("#buttons-buttons").append(group);
     }
-}
+};
 
 
-// This function handles events where one button is clicked
-$("#add-group").on("click", function(event) {
-    // event.preventDefault() prevents the form from trying to submit itself.
-    // We're using a form so that the user can hit enter instead of clicking the button if they want
+$("#add-group").on("click", function (event) {
     event.preventDefault();
 
-    // This line will grab the text from the input box
     var kpop = $("#kpop").val().trim();
-    // The movie from the textbox is then added to our array
+
+
     bts.push(kpop);
 
-    // calling renderButtons which handles the processing of our movie array
     showButtons();
+});
+
+showButtons();
+
+
+
+$("buttons-buttons").on("click", function() {
+    var kpop = $(this).attr("data-person");
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+      kpop + "&limit=10&api_key=ti59k5SAoYM0q2oy34i4oQmX7V8T39Qc";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    })
+      .then(function(response) {
+        var btsGiph = response.data;
+
+        for (var i = 0; i < bts.length; i++) {
+          var kpopDiv = $("<div>");
+
+          var rating = btsGiph[i].rating;
+
+          var p = $("<p>").text("Rating: " + rating);
+
+          var kpopImage = $("<img>");
+          kpopImage.attr("src", btsGiph[i].images.fixed_height.url);
+
+          kpopDiv.prepend(p);
+          kpopDiv.prepend(kpopImage);
+
+          $("#kpopHere").prepend(kpopDiv);
+        }
+      });
   });
-
-  // Calling the renderButtons function at least once to display the initial list of movies
-  showButtons();
-
-
-
-
-
-
-// var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=ti59k5SAoYM0q2oy34i4oQmX7V8T39Qc";
-
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-// }).then(function (response) {
-//     console.log(response);
-// });
