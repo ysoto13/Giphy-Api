@@ -6,8 +6,8 @@ font-family: 'Encode Sans Semi Expanded', sans-serif; */
 
 body {
     text-align: center;
-    background: #cbced1;
-    color: white;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
     font-family: 'Fresca', sans-serif;
     padding-top: 150px;
 }
