@@ -16,6 +16,9 @@ function showButtons() {
 
         group.addClass("kpop");
         group.attr("data-name", bts[i]);
+        group.attr("data-name", bts[i]);
+        group.attr("data-name", bts[i]);
+        group.attr("data-name", bts[i]);
         group.text(bts[i]);
         $("#button").append(group);
     }
@@ -67,10 +70,10 @@ $("button").on("click", function () {
                 $("#kpopHere").prepend(kpopDiv);
             }
         });
-});
 
 
-$(".gif").on("click", function () {
+
+$("body").on("click", "gif", function () {
     var state = $(this).attr("data-state");
     
     if (state === "still") {
@@ -83,5 +86,7 @@ $(".gif").on("click", function () {
   });
 
 
+
+});
 
 });
