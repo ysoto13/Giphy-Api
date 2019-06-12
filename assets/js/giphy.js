@@ -8,7 +8,7 @@ $(document).ready(function () {
 var bts = ["BTS", "A.R.M.Y", "Jin", "SUGA", "J-Hope", "RM", "Jimin", "V", "JungKook"];
 
 function showButtons() {
-    $("#buttons-buttons").empty();
+    $("#button").empty();
 
     for (var i = 0; i < bts.length; i++) {
         var group = $("<button>");
@@ -36,8 +36,8 @@ showButtons();
 
 
 
-$("buttons-buttons").on("click", function() {
-    var kpop = $(this).attr("data-person");
+$("button").on("click", function() {
+    var kpop = $(this).attr("data-kpop");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
       kpop + "&limit=10&api_key=ti59k5SAoYM0q2oy34i4oQmX7V8T39Qc";
 
@@ -48,7 +48,7 @@ $("buttons-buttons").on("click", function() {
       .then(function(response) {
         var btsGiph = response.data;
 
-        for (var i = 0; i < bts.length; i++) {
+        for (var i = 0; i < btsGiph.length; i++) {
           var kpopDiv = $("<div>");
 
           var rating = btsGiph[i].rating;
