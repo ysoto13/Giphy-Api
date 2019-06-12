@@ -6,87 +6,90 @@ $(document).ready(function () {
 
 
 
-var bts = ["BTS", "A.R.M.Y", "Jin", "SUGA", "J-Hope", "RM", "Jimin", "V", "JungKook"];
+    var bts = ["BTS", "A.R.M.Y", "Jin", "SUGA", "J-Hope", "RM", "Jimin", "V", "JungKook"];
 
-function showButtons() {
-    $("#button").empty();
+    function showButtons() {
+        $("#button").empty();
 
-    for (var i = 0; i < bts.length; i++) {
-        var group = $("<button>");
+        for (var i = 0; i < bts.length; i++) {
+            var group = $("<button>");
 
-        group.addClass("kpop");
-        group.attr("data-name", bts[i]);
-        group.attr("data-name", bts[i]);
-        group.attr("data-name", bts[i]);
-        group.attr("data-name", bts[i]);
-        group.text(bts[i]);
-        $("#button").append(group);
-    }
-};
+            group.addClass("kpop");
+            group.attr("data-name", bts[i]);
+            group.text(bts[i]);
+            $("#button").append(group);
+        }
+    };
 
 
-$("#add-group").on("click", function (event) {
-    event.preventDefault();
+    $("#add-group").on("click", function (event) {
+        event.preventDefault();
 
-    var kpop = $("#kpop").val().trim();
+        var kpop = $("#kpop").val().trim();
 
-    bts.push(kpop);
+        bts.push(kpop);
+
+        showButtons();
+    });
 
     showButtons();
-});
-
-showButtons();
 
 
 
-$("button").on("click", function () {
-    console.log("clicked")
-    var kpop = $(this).attr("data-kpop");
-    console.log(kpop)
-    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        kpop + "&api_key=ti59k5SAoYM0q2oy34i4oQmX7V8T39Qc&limit=5";
+    $("button").on("click", function () {
+        console.log("clicked")
+        var kpop = $(this).attr("data-kpop");
+        console.log(kpop)
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+            kpop + "&api_key=ti59k5SAoYM0q2oy34i4oQmX7V8T39Qc&limit=5";
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-        .then(function (response) {
-            console.log(response)
-            var results = response.data;
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+            .then(function (response) {
+                console.log(response)
+                var results = response.data;
 
-            for (var i = 0; i < results.length; i++) {
-                var kpopDiv = $("<div>");
+                for (var i = 0; i < results.length; i++) {
+                    var kpopDiv = $("<div>");
 
-                rating = results[i].rating;
+                    rating = results[i].rating;
 
-                var p = $("<p>").text("Rating: " + results[i].rating);
+                    var p = $("<p>").text("Rating: " + results[i].rating);
 
-                var kpopImage = $("<img>");
-                kpopImage.attr("src", results[i].images.fixed_height.url);
+                    // var kpopImage = $("<img>");
+                    // kpopImage.attr("src", results[i].images.fixed_height.url);
 
-                kpopDiv.append(p);
-                kpopDiv.append(kpopImage);
+                    var kpop = $("<img>").addClass("gif");
+                    kpop.attr("data-state", "still");
+                    kpop.attr("data-still", results[i].images.fixed_height_still.url);
+                    kpop.attr("src", results[i].images.fixed_height.url);
+                    kpop.attr("data-animate", results[i].images.fixed_height.url);
 
-                $("#kpopHere").prepend(kpopDiv);
-            }
+                    kpopDiv.append(p);
+                    kpopDiv.append(kpop);
+
+                    $("#kpopHere").prepend(kpopDiv);
+                };
+
+
+
+                $(".gif").on("click", function () {
+                    var state = $(this).attr("data-state");
+
+                    if (state === "still") {
+                        $(this).attr("src", $(this).attr("data-animate"));
+                        $(this).attr("data-state", "animate");
+                    } else {
+                        $(this).attr("src", $(this).attr("data-still"));
+                        $(this).attr("data-state", "still");
+                    }
+                });
+
+
+
+            });
         });
 
-
-
-$("body").on("click", "gif", function () {
-    var state = $(this).attr("data-state");
-    
-    if (state === "still") {
-      $(this).attr("src", $(this).attr("data-animate"));
-      $(this).attr("data-state", "animate");
-    } else {
-      $(this).attr("src", $(this).attr("data-still"));
-      $(this).attr("data-state", "still");
-    }
-  });
-
-
-
-});
-
-});
+    });
