@@ -26,7 +26,6 @@ $("#add-group").on("click", function (event) {
 
     var kpop = $("#kpop").val().trim();
 
-
     bts.push(kpop);
 
     showButtons();
