@@ -19,7 +19,7 @@ $(document).ready(function () {
             group.text(bts[i]);
             $("#button").append(group);
         }
-    }
+    };
 
 
     $("#add-group").on("click", function (event) {
