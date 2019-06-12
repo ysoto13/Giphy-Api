@@ -58,9 +58,10 @@ $(document).ready(function () {
 
                     var p = $("<p>").text("Rating: " + results[i].rating);
 
-                    
+
 
                     var kpop = $("<img>").addClass("gif");
+
                     kpop.attr("data-state", "still");
                     kpop.attr("data-still", results[i].images.fixed_height_still.url);
                     kpop.attr("src", results[i].images.fixed_height.url);
@@ -88,7 +89,9 @@ $(document).ready(function () {
 
 
 
+
             });
-        });
 
     });
+
+});
