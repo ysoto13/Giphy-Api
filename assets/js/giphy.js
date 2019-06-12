@@ -39,7 +39,7 @@ showButtons();
 $("button").on("click", function () {
     var kpop = $(this).attr("data-kpop");
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        kpop + "&api_key=ti59k5SAoYM0q2oy34i4oQmX7V8T39Qc&limit=10";
+        kpop + "&api_key=ti59k5SAoYM0q2oy34i4oQmX7V8T39Qc&limit=5";
 
     $.ajax({
         url: queryURL,
