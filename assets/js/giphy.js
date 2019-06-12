@@ -58,8 +58,7 @@ $(document).ready(function () {
 
                     var p = $("<p>").text("Rating: " + results[i].rating);
 
-                    // var kpopImage = $("<img>");
-                    // kpopImage.attr("src", results[i].images.fixed_height.url);
+                    
 
                     var kpop = $("<img>").addClass("gif");
                     kpop.attr("data-state", "still");
