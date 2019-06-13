@@ -6,7 +6,7 @@ $(document).ready(function () {
 
 
 
-    var bts = ["BTS", "A.R.M.Y", "Jin", "SUGA", "J-Hope", "RM", "Jimin", "V", "JungKook"];
+    var bts = ["BTS", "Kim Seok Jin", "Min Yoongi", "J-Hope", "RM", "Park Jimin", "Kim Taehyung", "Jeon Jungkook"];
 
     function showButtons() {
         $("#button").empty();
@@ -17,16 +17,19 @@ $(document).ready(function () {
             group.addClass("kpop");
             group.attr("data-name", bts[i]);
             group.text(bts[i]);
-            $("#button").append(group);
+            $("#display-buttons").append(group);
         }
     };
 
 
     $("#add-group").on("click", function (event) {
         event.preventDefault();
+        //added this line to empty the div before displaying the array...
+        $("#display-buttons").empty()
 
         var kpop = $("#kpop").val().trim();
-
+        console.log(kpop)
+        console.log(bts)
         bts.push(kpop);
 
         showButtons();
@@ -36,12 +39,13 @@ $(document).ready(function () {
 
 
 
-    $("button").on("click", function () {
+    $(document).on("click", ".kpop", function () {
         console.log("clicked")
-        var kpop = $(this).attr("data-kpop");
+        // I changed the data-kpop to data-name which is the attr of you dynamically created buttons
+        var kpop = $(this).attr("data-name");
         console.log(kpop)
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-            kpop + "&api_key=ti59k5SAoYM0q2oy34i4oQmX7V8T39Qc&limit=5";
+            kpop + "&api_key=ti59k5SAoYM0q2oy34i4oQmX7V8T39Qc&limit=7";
 
         $.ajax({
             url: queryURL,
@@ -58,13 +62,11 @@ $(document).ready(function () {
 
                     var p = $("<p>").text("Rating: " + results[i].rating);
 
-
-
                     var kpop = $("<img>").addClass("gif");
 
                     kpop.attr("data-state", "still");
                     kpop.attr("data-still", results[i].images.fixed_height_still.url);
-                    kpop.attr("src", results[i].images.fixed_height.url);
+                    kpop.attr("src", results[i].images.fixed_height_still.url);
                     kpop.attr("data-animate", results[i].images.fixed_height.url);
 
                     kpopDiv.append(p);
@@ -73,25 +75,22 @@ $(document).ready(function () {
                     $("#kpopHere").prepend(kpopDiv);
                 };
 
-
-
-                $(".gif").on("click", function () {
-                    var state = $(this).attr("data-state");
-
-                    if (state === "still") {
-                        $(this).attr("src", $(this).attr("data-animate"));
-                        $(this).attr("data-state", "animate");
-                    } else {
-                        $(this).attr("src", $(this).attr("data-still"));
-                        $(this).attr("data-state", "still");
-                    }
-                });
-
-
-
-
             });
-        ;
+    });
+
+    // I moved this blocked of code from inside the click button to out side
+    //also, I change you the Jquery to $(document) since your gifs were created dynamically.
+    $(document).on("click", ".gif", function () {
+        var state = $(this).attr("data-state");
+        console.log(state)
+
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-animate"));
+            $(this).attr("data-state", "animate");
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
     });
 
 });
