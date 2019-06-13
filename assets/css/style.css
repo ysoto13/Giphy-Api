@@ -10,4 +10,5 @@ body {
     color: rgb(0, 0, 0);
     font-family: 'Fresca', sans-serif;
     padding-top: 150px;
+    background-image: url(../images/intersection.png);
 }
